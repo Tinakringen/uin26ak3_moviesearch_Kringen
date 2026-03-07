@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react"
 import History from "../components/History"
+import MovieList from "../components/MovieList"
 
 export default function Home(){
 
+    const [movies, setMovies] = useState([])
     const [search, setSearch] = useState()
     const storedHistory = localStorage.getItem("search")
     const [focused, setFocused] = useState(false)
-
     const [history, setHistory] = useState(storedHistory ? JSON.parse(storedHistory) : [])
-
-    console.log("Denne kommer fra storage", storedHistory)
 
     const baseUrl = `http://www.omdbapi.com/?s=${search}&apikey=`
     const apiKey = import.meta.env.VITE_APP_API_KEY
@@ -18,11 +17,17 @@ export default function Home(){
         localStorage.setItem("search", JSON.stringify(history))
     }, [history])
 
-    const getMovies = async() => {
+    useEffect(() => {
+        getMovies("james bond")
+    }, [])
+
+
+    const getMovies = async(film) => {
         try
         {
-            const response = await fetch(`${baseUrl}${apiKey}`)
+            const response = await fetch(`http://www.omdbapi.com/?s=${film}&apikey=${apiKey}&type=movie`)
             const data = await response.json()
+            setMovies(data.Search)
             console.log(data)
         }
         catch(err){
@@ -54,8 +59,9 @@ export default function Home(){
                     <input type="search" placeholder="Harry Potter" onChange={handleChange} onFocus={() => setFocused(true)} /*onBlur={() => setFocused(false)}*/></input>
                 </label>
                 {focused ? <History history={history} setSearch={setSearch}/> : null}
-                <button onClick={getMovies}>Søk</button>
+                <button onClick={() => getMovies(search)}>Søk</button>
             </form> 
+            <MovieList movies={movies} />
         </main>
     )  
 }
