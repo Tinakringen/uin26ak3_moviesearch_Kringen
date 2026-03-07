@@ -42,9 +42,25 @@
 }
 
 /* Min css */
-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
+
+label{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+form {
+  margin-bottom: 3rem;
+}
+
+.movie-card img {
+  width: 100%;
+  
+}
+

@@ -37,6 +37,9 @@ export default function Home(){
 
     const handleChange = (e) => {
         setSearch(e.target.value)
+        if (e.target.value.length > 2){
+            getMovies(e.target.value)
+        }
     }
 
     const handleSubmit = (e) => {
@@ -52,14 +55,14 @@ export default function Home(){
 
     return (
         <main>
-            <h1>Forside</h1>
+            <h1>Nætflix</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     Søk etter film
                     <input type="search" placeholder="Harry Potter" onChange={handleChange} onFocus={() => setFocused(true)} /*onBlur={() => setFocused(false)}*/></input>
+                    <button onClick={() => getMovies(search)}>Søk</button>
                 </label>
                 {focused ? <History history={history} setSearch={setSearch}/> : null}
-                <button onClick={() => getMovies(search)}>Søk</button>
             </form> 
             <MovieList movies={movies} />
         </main>

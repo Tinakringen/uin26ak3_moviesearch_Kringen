@@ -1,12 +1,18 @@
-
+import { useNavigate } from "react-router-dom"
+import nophoto from "../assets/nophoto.png"
 
 export default function MovieCard({movie}){
 
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+    navigate(`/${movie.imdbID}`)
+    }
+
     return (
-        <article>
-            <h3>{movie.Title}</h3>
-            {<img src={movie?.Poster} alt="Movie poster" />}
-            <p>{movie?.Year}</p>
+        <article className="movie-card" onClick={handleClick}>
+            <img src={movie?.Poster} alt="Movie poster" onError={(e) => e.target.src = nophoto}/>
+            <h3>{movie.Title} ({movie.Year})</h3>
         </article>
     )
 }
