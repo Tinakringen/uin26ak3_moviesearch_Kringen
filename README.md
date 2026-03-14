@@ -1,16 +1,29 @@
-# React + Vite
+# Arbeidskrav 3 - Movie Search App
+Dette prosjektet er utviklet som en del av Arbeidskrav 3 i emnet Utvikling av interaktive nettsider. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Beskrivelse
+I denne applikasjonen skal brukere kunne:
+- Presenteres for 10 forskjellige filmer ved oppstart av appen.
+- Søke etter filmer/serier.
+- Trykke på en film som sender de til en ny side med mer informasjon.
 
-Currently, two official plugins are available:
+## Funksjonalitet
+- Viser James Bond filmer som standard på forsiden.
+- Søk etter filmer ved å skrive inn minst 3 tegn.
+- Klikk på en film for å se mer informasjon.
+- Kult fallback-bilde dersom filmplakat mangler.
+- Logg over tidligere søk via localStorage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Komponenter
+- History.jsx
+- MovieCard.jsx
+- MovieList.jsx
+- Home.jsx
+- Movie.jsx
 
-## React Compiler
+## Kjøring av prosjektet
+1. Installer avhengigheter: npm install
+2. Opprett en '.env' fil og legg til din OMDB API-nøkkel: 'VITE_APP_API_KEY=din_nøkkel'
+3. Start server: npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
