@@ -23,7 +23,10 @@ I denne applikasjonen skal brukere kunne:
 
 ## Kjøring av prosjektet
 1. Installer avhengigheter: npm install
-2. Opprett en '.env' fil og legg til din OMDB API-nøkkel: 'VITE_APP_API_KEY=din_nøkkel'
-3. Start server: npm run dev
+2. Start server: npm run dev
+
+API-nøkkel ligger vedlagt i ".env" filen, for å gjøre det enklere for dere som tester <3 
+
+
 
 
