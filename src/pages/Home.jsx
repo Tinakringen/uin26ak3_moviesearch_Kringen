@@ -10,7 +10,6 @@ export default function Home(){
     const [focused, setFocused] = useState(false)
     const [history, setHistory] = useState(storedHistory ? JSON.parse(storedHistory) : [])
 
-    const baseUrl = `http://www.omdbapi.com/?s=${search}&apikey=`
     const apiKey = import.meta.env.VITE_APP_API_KEY
 
     useEffect(() => {
@@ -25,7 +24,7 @@ export default function Home(){
     const getMovies = async(film) => {
         try
         {
-            const response = await fetch(`http://www.omdbapi.com/?s=${film}&apikey=${apiKey}&type=movie`)
+            const response = await fetch(`https://www.omdbapi.com/?s=${film}&apikey=${apiKey}&type=movie`)
             const data = await response.json()
             setMovies(data.Search)
             console.log(data)
@@ -50,18 +49,17 @@ export default function Home(){
     }
 
     console.log(history)
-
     // Local storage remove for å tømme loggen
 
     return (
         <main>
-            <h1>Nætflix</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Søk etter film
-                    <input type="search" placeholder="Harry Potter" onChange={handleChange} onFocus={() => setFocused(true)} /*onBlur={() => setFocused(false)}*/></input>
+            <h1>Filmær</h1>
+            <form onSubmit={handleSubmit}> 
+                <section className="search">
+                    <label>Søk etter film</label>
+                    <input type="search" placeholder="Harry Potter" onChange={handleChange} onFocus={() => setFocused(true)}></input>
                     <button onClick={() => getMovies(search)}>Søk</button>
-                </label>
+                </section> 
                 {focused ? <History history={history} setSearch={setSearch}/> : null}
             </form> 
             <MovieList movies={movies} />

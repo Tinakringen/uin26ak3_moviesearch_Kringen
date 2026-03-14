@@ -6,7 +6,7 @@ export default function MovieCard({movie}){
     const navigate = useNavigate()
 
     const handleClick = () => {
-    navigate(`/${movie.imdbID}`)
+    navigate(`/${movie.Title}`)
     }
 
     return (
